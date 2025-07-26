@@ -71,11 +71,12 @@ def analyzeData(df:pd.DataFrame)->dict:
         }
         if pd.api.types.is_numeric_dtype(df[col]):
             col_info.update({
+                col:{
                 "min":df[col].min(),
                 "max":df[col].max(),
                 "mean":df[col].mean(),
                 "median":df[col].median(),
-                "standard_deviation":df[col].std()
+                "standard_deviation":df[col].std()}
             })
         elif pd.api.types.is_string_dtype(df[col]):
             col_info.update({
@@ -99,11 +100,11 @@ def processFile(filePath:str, analyze:bool=True)->tuple[pd.DataFrame | dict] | p
 
 
 
-filePath = '/Users/siddharthnarolia/Projects/Github/utilities/app/services/sample_data/sample.csv'
-QUERY = "select distinct units from df order by 1 "
-df, schema = processFile(filePath=filePath)
-df = queryDataframe(df=df, sql=QUERY)
-print(df)
+# filePath = '/Users/siddharthnarolia/Projects/Github/utilities/app/services/sample_data/sample.csv'
+# QUERY = "select distinct units from df order by 1 "
+# df, schema = processFile(filePath=filePath)
+# df = queryDataframe(df=df, sql=QUERY)
 # print(df)
-# print(df.dtypes)
-# print(analyzeData(pd.read_csv(filePath)))
+# # print(df)
+# # print(df.dtypes)
+# # print(analyzeData(pd.read_csv(filePath)))
