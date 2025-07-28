@@ -2,10 +2,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hello</title>
+    <title>File Query</title>
+    <script src="https://unpkg.com/htmx.org"></script>
 </head>
 <body>
-    <h1>Hello, World!</h1>
-    <p>This is a sample paragraph</p>
+    <h2>Upload File</h2>
+    <form id="file_upload_form" hx-post="/upload" hx-target="#upload_result" hx-swap="innerHTML" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".csv, .xlsx, .parquet, .json, .xls, "/>
+        <button type="submit">Upload</button>
+    </form>
+    <div id="upload_result"></div>
+    <hr>
+    <h2>Run Query</h2>
+    <form id="query-form" hx-post="/run-query" hx-target="#query-result" hx-swap="innerHTML">
+        <input type="text" name="query" placeholder="Enter SQL query" style="width:400px;">
+        <button type="submit">Run Query</button>
+    </form>
+    <div id="query-result"></div>
+</div>
 </body>
 </html>

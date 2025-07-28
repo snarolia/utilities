@@ -3,3 +3,4 @@ build
 app/services/sample_data
 app/__pycache__
 .ipynb_checkpoints
+.DS_Store
